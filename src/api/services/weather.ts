@@ -1,8 +1,6 @@
-import { createServer } from "http";
-import { GetCity, GetCityServerInput, GetCurrentTime, GetCurrentTimeServerInput, GetCurrentTimeServerOutput, GetForecast, GetForecastServerOutput, WeatherService as IWeatherService, ListCities, ListCitiesServerInput, ListCitiesServerOutput, getWeatherServiceHandler } from "@kuraudo.io/iam-service-ssdk";
-import { convertRequest, writeResponse } from "@aws-smithy/server-node";
+import { GetCityServerInput, GetCurrentTimeServerInput, GetCurrentTimeServerOutput, GetForecastServerOutput, WeatherService as IWeatherService, ListCitiesServerInput, ListCitiesServerOutput, getWeatherServiceHandler } from "@kuraudo.io/iam-service-ssdk";
 
-class WeatherService implements IWeatherService<{}> {
+export class WeatherService implements IWeatherService<{}> {
     async GetCity(input: GetCityServerInput, ctx: {}) {
         return {
             name: "Sheffield",
@@ -37,13 +35,4 @@ class WeatherService implements IWeatherService<{}> {
     }
 }
 
-const handler = getWeatherServiceHandler(new WeatherService());
-
-const server = createServer(async (req, res) => {
-    const httpRequest = convertRequest(req);
-    const httpResponse = await handler.handle(httpRequest, {});
-    return writeResponse(httpResponse, res);
-})
-
-server.listen(3000);
-console.error("Listening on *:3000");
+export const weatherServiceHandler = getWeatherServiceHandler(new WeatherService());

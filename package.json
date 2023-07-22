@@ -3,7 +3,15 @@
     "private": true,
     "version": "0.1.0",
     "scripts": {
-        "dev:start": "node -r @swc-node/register src/index.ts"
+        "build": "pnpm clean && pnpm build:compile",
+        "build:start": "pnpm build && pnpm start",
+        "build:compile": "swc src -d build/ts -D",
+        "build:clean": "rimraf dist/",
+        "start": "cross-env NODE_ENV=production node build/ts/main.js",
+        "dev": "nodemon -x node -r @swc-node/register src/main.ts",
+        "dev:start": "node -r @swc-node/register src/main.ts",
+        "dev:compile": "swc src -w -d build/ts",
+        "type:check": "tsc --pretty --skipLibCheck"
     },
     "dependencies": {
         "@aws-smithy/server-common": "1.0.0-alpha.10",
@@ -16,6 +24,8 @@
         "@swc/core": "^1.3.70",
         "@tsconfig/node20": "^20.1.0",
         "@types/node": "^20.4.4",
+        "nodemon": "^3.0.1",
+        "rimraf": "^3.0.0",
         "typescript": "^5.1.6"
     }
 }
