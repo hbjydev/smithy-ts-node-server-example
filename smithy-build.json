@@ -1,0 +1,35 @@
+{
+    "version": "1.0",
+    "sources": [
+        "models"
+    ],
+    "maven": {
+        "dependencies": [
+            "software.amazon.smithy:smithy-aws-traits:1.33.0",
+            "software.amazon.smithy:smithy-validation-model:1.33.0",
+            "software.amazon.smithy.typescript:smithy-typescript-codegen:0.17.1",
+            "software.amazon.smithy.typescript:smithy-aws-typescript-codegen:0.17.0"
+        ]
+    },
+    "projections": {
+        "ts-server": {
+            "plugins": {
+                "typescript-ssdk-codegen" : {
+                    "package" : "@kuraudo.io/iam-service-ssdk",
+                    "packageVersion": "0.0.1"
+                }
+            }
+        }
+    },
+    "plugins": {
+        "typescript-codegen": {
+            "service": "example.weather#Weather",
+            "targetNamespace": "SmithyExample",
+            "package": "smithyexample",
+            "packageVersion": "0.0.1",
+            "packageJson": {
+                "license": "Apache-2.0"
+            }
+        }
+    }
+}
