@@ -1,4 +1,5 @@
 ---
 packages:
-  - ./build/smithy/source/typescript-codegen
-  - ./build/smithy/ts-server/typescript-ssdk-codegen
+  - ./server
+  - ./codegen/build/smithy/source/typescript-codegen
+  - ./codegen/build/smithy/ts-server/typescript-ssdk-codegen

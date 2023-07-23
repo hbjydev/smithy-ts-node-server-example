@@ -6,44 +6,9 @@ settings:
 
 importers:
 
-  .:
-    dependencies:
-      '@aws-smithy/server-common':
-        specifier: 1.0.0-alpha.10
-        version: 1.0.0-alpha.10
-      '@aws-smithy/server-node':
-        specifier: 1.0.0-alpha.10
-        version: 1.0.0-alpha.10
-      '@kuraudo.io/iam-service-ssdk':
-        specifier: workspace:*
-        version: link:build/smithy/ts-server/typescript-ssdk-codegen
-    devDependencies:
-      '@swc-node/register':
-        specifier: ^1.6.6
-        version: 1.6.6(@swc/core@1.3.70)(typescript@5.1.6)
-      '@swc/cli':
-        specifier: ^0.1.62
-        version: 0.1.62(@swc/core@1.3.70)
-      '@swc/core':
-        specifier: ^1.3.70
-        version: 1.3.70
-      '@tsconfig/node20':
-        specifier: ^20.1.0
-        version: 20.1.0
-      '@types/node':
-        specifier: ^20.4.4
-        version: 20.4.4
-      nodemon:
-        specifier: ^3.0.1
-        version: 3.0.1
-      rimraf:
-        specifier: ^3.0.0
-        version: 3.0.0
-      typescript:
-        specifier: ^5.1.6
-        version: 5.1.6
+  .: {}
 
-  build/smithy/source/typescript-codegen:
+  codegen/build/smithy/source/typescript-codegen:
     dependencies:
       '@aws-crypto/sha256-browser':
         specifier: 3.0.0
@@ -164,7 +129,7 @@ importers:
         specifier: ~4.9.5
         version: 4.9.5
 
-  build/smithy/ts-server/typescript-ssdk-codegen:
+  codegen/build/smithy/ts-server/typescript-ssdk-codegen:
     dependencies:
       '@aws-crypto/sha256-browser':
         specifier: 3.0.0
@@ -264,6 +229,49 @@ importers:
         specifier: ~4.9.5
         version: 4.9.5
 
+  server:
+    dependencies:
+      '@aws-smithy/server-common':
+        specifier: 1.0.0-alpha.10
+        version: 1.0.0-alpha.10
+      '@aws-smithy/server-node':
+        specifier: 1.0.0-alpha.10
+        version: 1.0.0-alpha.10
+      '@kuraudo.io/iam-service-ssdk':
+        specifier: workspace:*
+        version: link:../codegen/build/smithy/ts-server/typescript-ssdk-codegen
+      reflect-metadata:
+        specifier: ^0.1.13
+        version: 0.1.13
+      tsyringe:
+        specifier: ^4.8.0
+        version: 4.8.0
+    devDependencies:
+      '@swc-node/register':
+        specifier: ^1.6.6
+        version: 1.6.6(@swc/core@1.3.70)(typescript@4.9.5)
+      '@swc/cli':
+        specifier: ^0.1.62
+        version: 0.1.62(@swc/core@1.3.70)
+      '@swc/core':
+        specifier: ^1.3.70
+        version: 1.3.70
+      '@tsconfig/node20':
+        specifier: ^20.1.0
+        version: 20.1.0
+      '@types/node':
+        specifier: ^20.4.4
+        version: 20.4.4
+      nodemon:
+        specifier: ^3.0.1
+        version: 3.0.1
+      rimraf:
+        specifier: ^3.0.0
+        version: 3.0.0
+      typescript:
+        specifier: ^4.9.5
+        version: 4.9.5
+
 packages:
 
   /@aws-crypto/ie11-detection@3.0.0:
@@ -312,8 +320,8 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/types': 3.357.0
-      '@smithy/protocol-http': 1.1.0
-      '@smithy/types': 1.1.0
+      '@smithy/protocol-http': 1.1.1
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -322,7 +330,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/types': 3.357.0
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -331,8 +339,8 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-sdk/types': 3.357.0
-      '@smithy/protocol-http': 1.1.0
-      '@smithy/types': 1.1.0
+      '@smithy/protocol-http': 1.1.1
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -342,8 +350,8 @@ packages:
     dependencies:
       '@aws-sdk/types': 3.357.0
       '@aws-sdk/util-endpoints': 3.357.0
-      '@smithy/protocol-http': 1.1.0
-      '@smithy/types': 1.1.0
+      '@smithy/protocol-http': 1.1.1
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -352,7 +360,7 @@ packages:
     engines: {node: '>=14.0.0'}
     deprecated: This package has moved to @smithy/protocol-http
     dependencies:
-      '@smithy/protocol-http': 1.1.0
+      '@smithy/protocol-http': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -382,7 +390,7 @@ packages:
     resolution: {integrity: sha512-fk9ymBUIYbxiGm99Cn+kAAXmvMCWTf/cHAcB79oCXV4ELXdPa9lN5xQhZRFNxLUeXG4OAMEuCAUUuZEj8Fnc1Q==}
     dependencies:
       '@aws-sdk/types': 3.357.0
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       bowser: 2.11.0
       tslib: 2.6.0
     dev: false
@@ -397,8 +405,8 @@ packages:
         optional: true
     dependencies:
       '@aws-sdk/types': 3.357.0
-      '@smithy/node-config-provider': 1.0.1
-      '@smithy/types': 1.1.0
+      '@smithy/node-config-provider': 1.0.2
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -486,7 +494,7 @@ packages:
     resolution: {integrity: sha512-quj0xUiEVG/UHfY82EtthR/+S5/17p3IxXArC3NFSNqryMobWbG9oWgJy2s2cgUSVZLzxevjKKvxrilK7JEDaA==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       '@smithy/util-config-provider': 1.0.2
       '@smithy/util-middleware': 1.0.2
       tslib: 2.6.0
@@ -506,10 +514,10 @@ packages:
   /@smithy/fetch-http-handler@1.0.1:
     resolution: {integrity: sha512-/e2A8eOMk4FVZBQ0o6uF/ttLtFZcmsK5MIwDu1UE3crM4pCAIP19Ul8U9rdLlHhIu81X4AcJmSw55RDSpVRL/w==}
     dependencies:
-      '@smithy/protocol-http': 1.1.0
+      '@smithy/protocol-http': 1.1.1
       '@smithy/querystring-builder': 1.0.2
-      '@smithy/types': 1.1.0
-      '@smithy/util-base64': 1.0.1
+      '@smithy/types': 1.1.1
+      '@smithy/util-base64': 1.0.2
       tslib: 2.6.0
     dev: false
 
@@ -527,16 +535,16 @@ packages:
     resolution: {integrity: sha512-eCz08BySBcOjVObjbRAS/XMKUGY4ujnuS+GoWeEpzpCSKDnO8/YQ0rStRt4C0llRmhApizYc1tK9DiJwfvXcBg==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       '@smithy/util-buffer-from': 1.0.2
-      '@smithy/util-utf8': 1.0.1
+      '@smithy/util-utf8': 1.0.2
       tslib: 2.6.0
     dev: false
 
   /@smithy/invalid-dependency@1.0.1:
     resolution: {integrity: sha512-kib63GFlAzRn/wf8M0cRWrZA1cyOy5IvpTkLavCY782DPFMP0EaEeD6VrlNIOvD6ncf7uCJ68HqckhwK1qLT3g==}
     dependencies:
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -551,8 +559,8 @@ packages:
     resolution: {integrity: sha512-vWWigayk5i2cFp9xPX5vdzHyK+P0t/xZ3Ovp4Ss+c8JQ1Hlq2kpJZVWtTKsmdfND5rVo5lu0kD5wgAMUCcmuhw==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/protocol-http': 1.1.0
-      '@smithy/types': 1.1.0
+      '@smithy/protocol-http': 1.1.1
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -560,9 +568,9 @@ packages:
     resolution: {integrity: sha512-ZRsjG8adtxQ456FULPqPFmWtrW44Fq8IgdQvQB+rC2RSho3OUzS+TiEIwb5Zs6rf2IoewITKtfdtsUZcxXO0ng==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/protocol-http': 1.1.0
+      '@smithy/protocol-http': 1.1.1
       '@smithy/service-error-classification': 1.0.3
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       '@smithy/util-middleware': 1.0.2
       '@smithy/util-retry': 1.0.3
       tslib: 2.6.0
@@ -573,7 +581,7 @@ packages:
     resolution: {integrity: sha512-bn5lWk8UUeXFCQfkrNErz5SbeNd+2hgYegHMLsOLPt4URDIsyREar6wMsdsR+8UCdgR5s8udG3Zalgc7puizIQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -590,7 +598,7 @@ packages:
     dependencies:
       '@smithy/property-provider': 1.0.2
       '@smithy/shared-ini-file-loader': 1.0.2
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -609,9 +617,9 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/abort-controller': 1.0.2
-      '@smithy/protocol-http': 1.1.0
+      '@smithy/protocol-http': 1.1.1
       '@smithy/querystring-builder': 1.0.2
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -638,7 +646,7 @@ packages:
     resolution: {integrity: sha512-H5y/kZOqfJSqRkwtcAoVbqONmhdXwSgYNJ1Glk5Ry8qlhVVy5qUzD9EklaCH8/XLnoCsLO/F/Giee8MIvaBRkg==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -691,7 +699,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/middleware-stack': 1.0.1
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       '@smithy/util-stream': 1.0.2
       tslib: 2.6.0
     dev: false
@@ -714,7 +722,7 @@ packages:
     resolution: {integrity: sha512-33vWEtE6HzmwjEcEb4I58XMLRAchwPS93YhfDyXAXr1jwDCzfXmMayQwwpyW847rpWj0XJimxqia8q0z+k/ybw==}
     dependencies:
       '@smithy/querystring-parser': 1.0.2
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -775,7 +783,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dependencies:
       '@smithy/property-provider': 1.0.2
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       bowser: 2.11.0
       tslib: 2.6.0
     dev: false
@@ -786,9 +794,9 @@ packages:
     dependencies:
       '@smithy/config-resolver': 1.0.1
       '@smithy/credential-provider-imds': 1.0.2
-      '@smithy/node-config-provider': 1.0.1
+      '@smithy/node-config-provider': 1.0.2
       '@smithy/property-provider': 1.0.2
-      '@smithy/types': 1.1.0
+      '@smithy/types': 1.1.1
       tslib: 2.6.0
     dev: false
 
@@ -860,7 +868,7 @@ packages:
       '@swc/core': 1.3.70
     dev: true
 
-  /@swc-node/register@1.6.6(@swc/core@1.3.70)(typescript@5.1.6):
+  /@swc-node/register@1.6.6(@swc/core@1.3.70)(typescript@4.9.5):
     resolution: {integrity: sha512-KgnQrWLgtJzEgPpxvhOPUDonv1xreVumGdzXDQlDVIqU3vH+spW8ZYxxyjJVMh3G/mQG8E3bFvUMHIS+E3FL2w==}
     peerDependencies:
       '@swc/core': '>= 1.3'
@@ -873,7 +881,7 @@ packages:
       debug: 4.3.4
       pirates: 4.0.6
       tslib: 2.6.0
-      typescript: 5.1.6
+      typescript: 4.9.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1915,6 +1923,10 @@ packages:
       resolve: 1.22.2
     dev: true
 
+  /reflect-metadata@0.1.13:
+    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
+    dev: false
+
   /regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: true
@@ -2196,6 +2208,13 @@ packages:
   /tslib@2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
+  /tsyringe@4.8.0:
+    resolution: {integrity: sha512-YB1FG+axdxADa3ncEtRnQCFq/M0lALGLxSZeVNbTU8NqhOVc51nnv2CISTcvc1kyv6EGPtXVr0v6lWeDxiijOA==}
+    engines: {node: '>= 6.0.0'}
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+
   /typedoc@0.23.23(typescript@4.9.5):
     resolution: {integrity: sha512-cg1YQWj+/BU6wq74iott513U16fbrPCbyYs04PHZgvoKJIc6EY4xNobyDZh4KMfRGW8Yjv6wwIzQyoqopKOUGw==}
     engines: {node: '>= 14.14'}
@@ -2213,12 +2232,6 @@ packages:
   /typescript@4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /typescript@5.1.6:
-    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
-    engines: {node: '>=14.17'}
     hasBin: true
     dev: true
 

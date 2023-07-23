@@ -12,7 +12,9 @@
 
         "baseUrl": ".",
         "paths": {
-            "@api/services": ["src/api/services"]
+            "@api/services": ["src/api/services"],
+            "@services":  ["src/services"],
+            "@utils/functions":  ["src/utils/functions"]
         }
     },
     "include": ["src", "**/*.ts"],
